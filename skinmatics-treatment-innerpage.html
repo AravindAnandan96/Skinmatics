@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Acne & Scar Correction — Skinmatics</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ivory:#FAF8F3;
+  --sand:#F2EDE4;
+  --warm:#EDE6D9;
+  --terr:#A8582A;
+  --terr2:#C4754A;
+  --sage:#5A7A5E;
+  --ink:#1A1410;
+  --mid:#4A3F36;
+  --muted:#8A7E74;
+  --border:#DDD5C8;
+  --border2:#C9BFB0;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ivory);color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+
+/* ── UTIL ── */
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--terr);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--terr);flex-shrink:0}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(32px,3.8vw,52px);font-weight:300;line-height:1.1}
+.section-title em{font-style:italic;color:var(--terr)}
+
+/* ── BUTTONS ── */
+.btn-terr{display:inline-block;background:var(--terr);color:#fff;padding:15px 38px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;text-decoration:none;transition:background .3s;border:none;cursor:pointer}
+.btn-terr:hover{background:var(--terr2)}
+.btn-outline{display:inline-block;border:1.5px solid var(--ink);color:var(--ink);padding:14px 36px;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-outline:hover{border-color:var(--terr);color:var(--terr)}
+
+/* ── NAV ── */
+#nav{position:sticky;top:0;z-index:200;background:var(--ivory);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:72px}
+.nav-logo{font-family:'Fraunces',serif;font-size:22px;font-weight:300;color:var(--ink);text-decoration:none;letter-spacing:.5px}
+.nav-logo em{font-style:italic;color:var(--terr)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:13px;color:var(--mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--terr)}
+.nav-links a.active{color:var(--terr)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{padding:18px 60px;background:var(--sand);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.breadcrumb a{font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.5px;transition:color .2s}
+.breadcrumb a:hover{color:var(--terr)}
+.breadcrumb span{font-size:11px;color:var(--muted)}
+.breadcrumb .current{color:var(--terr);font-size:11px;letter-spacing:.5px}
+
+/* ── HERO — treatment inner ── */
+.tx-hero{display:grid;grid-template-columns:1fr 1fr;min-height:78vh;border-bottom:1px solid var(--border)}
+.tx-hero-left{padding:80px 60px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border)}
+.tx-hero-tag{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.tx-hero-tag .tag-num{font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--terr)}
+.tx-hero-tag .tag-cat{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding:5px 14px;border:1px solid var(--border)}
+.tx-hero-h1{font-family:'Fraunces',serif;font-size:clamp(40px,5.5vw,78px);font-weight:300;line-height:1.02;margin-bottom:32px}
+.tx-hero-h1 em{font-style:italic;color:var(--terr)}
+.tx-hero-desc{font-size:15px;line-height:1.95;color:var(--mid);max-width:460px;margin-bottom:44px}
+.tx-hero-btns{display:flex;gap:14px}
+.tx-hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;padding-top:36px;border-top:1px solid var(--border)}
+.tx-stat{padding-right:24px;border-right:1px solid var(--border)}
+.tx-stat:last-child{border-right:none;padding-left:24px;padding-right:0}
+.tx-stat:nth-child(2){padding-left:24px}
+.tx-stat .s-num{font-family:'Fraunces',serif;font-size:30px;color:var(--terr);line-height:1}
+.tx-stat .s-lbl{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.5}
+
+.tx-hero-right{position:relative;overflow:hidden;background:var(--sand)}
+.tx-hero-img{width:100%;height:100%;object-fit:cover;display:block}
+.tx-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(26,20,16,.55) 100%)}
+.tx-hero-caption{position:absolute;bottom:40px;left:40px;right:40px}
+.tx-hero-caption p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:8px}
+.tx-hero-caption h3{font-family:'Fraunces',serif;font-size:22px;font-weight:300;color:#fff;font-style:italic}
+.tx-badge{position:absolute;top:40px;right:40px;background:var(--terr);color:#fff;padding:18px 22px;text-align:center}
+.tx-badge .b-num{font-family:'Fraunces',serif;font-size:34px;line-height:1}
+.tx-badge .b-text{font-size:9px;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-top:4px}
+
+/* ── TICKER ── */
+.ticker{background:var(--terr);padding:12px 0;overflow:hidden}
+.ticker-wrap{display:flex;animation:ticker 24s linear infinite;width:max-content}
+.ti{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px}
+.ts{color:rgba(255,255,255,.4);font-size:12px}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── OVERVIEW STRIP ── */
+.overview{display:grid;grid-template-columns:1fr 2fr;border-bottom:1px solid var(--border)}
+.ov-label{padding:60px;border-right:1px solid var(--border);background:var(--sand);display:flex;flex-direction:column;justify-content:space-between}
+.ov-label .eyebrow{margin-bottom:0}
+.ov-info-grid{display:flex;flex-direction:column;gap:20px;margin-top:30px}
+.ov-info-item{padding:16px 0;border-top:1px solid var(--border)}
+.ov-info-item .oi-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.ov-info-item .oi-val{font-size:14px;color:var(--ink)}
+.ov-content{padding:60px;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.ov-content h2{font-family:'Fraunces',serif;font-size:clamp(26px,2.5vw,38px);font-weight:300;line-height:1.3;margin-bottom:20px;grid-column:1/-1}
+.ov-content h2 em{font-style:italic;color:var(--terr)}
+.ov-col p{font-size:14px;line-height:2;color:var(--mid)}
+.ov-col p+p{margin-top:16px}
+
+/* ── HOW IT WORKS ── */
+.how{padding:90px 60px;background:var(--ivory)}
+.how-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px}
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.step{padding:40px 32px;border-left:1px solid var(--border);position:relative}
+.step:last-child{border-right:1px solid var(--border)}
+.step-num{font-family:'Fraunces',serif;font-size:52px;font-weight:300;color:var(--border2);line-height:1;margin-bottom:20px;font-style:italic}
+.step-title{font-family:'Fraunces',serif;font-size:20px;font-weight:300;margin-bottom:12px}
+.step-desc{font-size:13px;line-height:1.9;color:var(--mid)}
+.step-arrow{position:absolute;top:40px;right:-14px;width:28px;height:28px;background:var(--terr);display:flex;align-items:center;justify-content:center;z-index:1}
+.step-arrow svg{width:12px;height:12px;fill:#fff}
+.step:last-child .step-arrow{display:none}
+
+/* ── TREATMENTS ADDRESSED ── */
+.conditions{background:var(--sand);padding:0 60px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cond-inner{display:grid;grid-template-columns:280px 1fr}
+.cond-sidebar{padding:60px 0;padding-right:60px;border-right:1px solid var(--border)}
+.cond-sidebar .eyebrow{margin-bottom:24px}
+.cond-sidebar p{font-size:13px;line-height:1.9;color:var(--mid)}
+.cond-grid{padding:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.cond-card{background:var(--ivory);padding:28px;transition:background .2s;cursor:pointer}
+.cond-card:hover{background:var(--warm)}
+.cond-icon{width:40px;height:40px;margin-bottom:16px;display:flex;align-items:center;justify-content:center}
+.cond-icon svg{width:24px;height:24px;stroke:var(--terr);fill:none;stroke-width:1.5}
+.cond-name{font-family:'Fraunces',serif;font-size:17px;font-weight:300;margin-bottom:8px}
+.cond-short{font-size:12px;color:var(--muted);line-height:1.7}
+
+/* ── BEFORE / AFTER ── */
+.ba-section{padding:90px 60px;background:var(--ivory)}
+.ba-header{margin-bottom:50px}
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.ba-card{background:var(--sand);overflow:hidden}
+.ba-slider{position:relative;aspect-ratio:3/4;overflow:hidden;cursor:ew-resize;user-select:none}
+.ba-before,.ba-after{position:absolute;inset:0}
+.ba-before img,.ba-after img{width:100%;height:100%;object-fit:cover}
+.ba-after{clip-path:inset(0 50% 0 0);transition:clip-path 0s}
+.ba-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-50%)}
+.ba-divider-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;background:var(--terr);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.ba-divider-handle svg{width:16px;height:16px;fill:#fff}
+.ba-label-before,.ba-label-after{position:absolute;bottom:16px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#fff;background:rgba(26,20,16,.5);padding:5px 12px}
+.ba-label-before{left:16px}
+.ba-label-after{right:16px}
+.ba-info{padding:20px 22px;background:var(--ivory)}
+.ba-info .ba-treatment{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--terr);margin-bottom:6px}
+.ba-info .ba-result{font-family:'Fraunces',serif;font-size:17px;font-weight:300}
+.ba-info .ba-sessions{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* ── TESTIMONIALS ── */
+.testi{background:var(--sand);padding:90px 60px;border-top:1px solid var(--border)}
+.testi-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:50px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.t-card{background:var(--ivory);padding:36px;display:flex;flex-direction:column;gap:20px}
+.t-stars{display:flex;gap:4px}
+.t-star{color:var(--terr);font-size:16px}
+.t-quote{font-family:'Fraunces',serif;font-size:17px;font-style:italic;font-weight:300;line-height:1.65;color:var(--ink)}
+.t-patient{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid var(--border)}
+.t-avatar{width:40px;height:40px;border-radius:50%;background:var(--warm);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:17px;color:var(--terr)}
+.t-name{font-size:13px;font-weight:500;color:var(--ink)}
+.t-tag{font-size:11px;color:var(--muted);margin-top:2px}
+.t-verified{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--sage);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+
+/* ── DOCTOR ── */
+.doctor-cta{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border)}
+.doc-left{padding:80px 60px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border)}
+.doc-left .eyebrow{margin-bottom:24px}
+.doc-left h2{font-family:'Fraunces',serif;font-size:clamp(28px,3vw,44px);font-weight:300;line-height:1.2;margin-bottom:20px}
+.doc-left h2 em{font-style:italic;color:var(--terr)}
+.doc-left p{font-size:14px;line-height:1.95;color:var(--mid);margin-bottom:36px;max-width:440px}
+.doc-card-row{display:flex;gap:16px;margin-bottom:40px}
+.doc-mini{display:flex;align-items:center;gap:14px;padding:16px 20px;border:1px solid var(--border);flex:1;background:var(--sand)}
+.doc-mini-img{width:52px;height:52px;border-radius:50%;background:var(--warm);overflow:hidden;flex-shrink:0}
+.doc-mini-img img{width:100%;height:100%;object-fit:cover}
+.doc-mini-name{font-family:'Fraunces',serif;font-size:15px;font-weight:300}
+.doc-mini-qual{font-size:11px;color:var(--muted);margin-top:2px}
+.doc-right{position:relative;overflow:hidden;background:var(--ink)}
+.doc-right img{width:100%;height:100%;object-fit:cover;opacity:.7;display:block}
+.doc-right-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,20,16,.8) 0%,transparent 50%)}
+.doc-right-content{position:absolute;bottom:0;left:0;right:0;padding:50px}
+.doc-right-content .eyebrow::before{background:#fff}
+.doc-right-content .eyebrow{color:rgba(255,255,255,.6)}
+.doc-right-content h3{font-family:'Fraunces',serif;font-size:32px;font-weight:300;color:#fff;margin-bottom:8px;font-style:italic}
+.doc-right-content p{font-size:13px;color:rgba(255,255,255,.65);margin-bottom:24px}
+
+/* ── FAQ ── */
+.faq{padding:90px 60px;background:var(--ivory);border-top:1px solid var(--border)}
+.faq-inner{display:grid;grid-template-columns:320px 1fr;gap:80px}
+.faq-left .eyebrow{margin-bottom:24px}
+.faq-left h2{font-family:'Fraunces',serif;font-size:clamp(26px,2.5vw,38px);font-weight:300;line-height:1.2;margin-bottom:20px}
+.faq-left h2 em{font-style:italic;color:var(--terr)}
+.faq-left p{font-size:14px;line-height:1.9;color:var(--mid);margin-bottom:32px}
+.faq-list{display:flex;flex-direction:column}
+.faq-item{border-top:1px solid var(--border);overflow:hidden}
+.faq-item:last-child{border-bottom:1px solid var(--border)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:24px 0;cursor:pointer;gap:20px}
+.faq-q-text{font-family:'Fraunces',serif;font-size:17px;font-weight:300;color:var(--ink)}
+.faq-toggle{width:28px;height:28px;border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .3s;color:var(--terr);font-size:18px;line-height:1}
+.faq-item.open .faq-toggle{background:var(--terr);border-color:var(--terr);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-a-inner{padding:0 0 24px}
+.faq-a-inner p{font-size:14px;line-height:1.9;color:var(--mid)}
+.faq-item.open .faq-a{max-height:400px}
+
+/* ── BOOKING CTA ── */
+.booking{background:var(--ink);padding:90px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.booking-left .eyebrow::before{background:var(--terr)}
+.booking-left .eyebrow{color:var(--terr);margin-bottom:28px}
+.booking-left h2{font-family:'Fraunces',serif;font-size:clamp(30px,3.5vw,52px);font-weight:300;color:#fff;line-height:1.1;margin-bottom:20px}
+.booking-left h2 em{font-style:italic;color:var(--terr)}
+.booking-left p{font-size:14px;line-height:1.9;color:rgba(255,255,255,.6);margin-bottom:36px}
+.booking-left .btn-terr{margin-right:12px}
+.booking-form{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:40px}
+.booking-form h3{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:#fff;margin-bottom:24px;font-style:italic}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-row.single{grid-template-columns:1fr}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.form-field input,.form-field select{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);padding:13px 16px;font-size:13px;color:#fff;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;-webkit-appearance:none}
+.form-field input::placeholder{color:rgba(255,255,255,.3)}
+.form-field input:focus,.form-field select:focus{border-color:var(--terr)}
+.form-field select option{background:var(--ink);color:#fff}
+.form-submit{width:100%;margin-top:14px;padding:16px;background:var(--terr);color:#fff;border:none;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background .3s}
+.form-submit:hover{background:var(--terr2)}
+.form-note{font-size:11px;color:rgba(255,255,255,.35);margin-top:12px;text-align:center;letter-spacing:.3px}
+
+/* ── RELATED TREATMENTS ── */
+.related{padding:90px 60px;background:var(--sand);border-top:1px solid var(--border)}
+.related-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.rel-rows{margin-top:0}
+.rel-row{display:grid;grid-template-columns:56px 1fr 280px 160px;align-items:center;gap:0;padding:0;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;text-decoration:none;color:inherit}
+.rel-row:hover{background:rgba(168,88,42,.04)}
+.rel-n{padding:24px 0;font-family:'Fraunces',serif;font-size:12px;color:var(--terr);letter-spacing:1px;font-style:italic}
+.rel-name{padding:24px 24px;font-family:'Fraunces',serif;font-size:20px;font-weight:300}
+.rel-desc{padding:24px 24px;font-size:12px;line-height:1.8;color:var(--muted)}
+.rel-action{padding:24px;display:flex;align-items:center;justify-content:flex-end;gap:8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--terr)}
+.rel-action svg{width:14px;height:14px;stroke:var(--terr);fill:none;stroke-width:2;transition:transform .2s}
+.rel-row:hover .rel-action svg{transform:translateX(4px)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(255,255,255,.7)}
+.footer-top{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.2fr;gap:0;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-col{padding:60px}
+.footer-col+.footer-col{border-left:1px solid rgba(255,255,255,.08)}
+.footer-logo{font-family:'Fraunces',serif;font-size:24px;font-weight:300;color:#fff;margin-bottom:16px}
+.footer-logo em{font-style:italic;color:var(--terr)}
+.footer-tagline{font-size:13px;line-height:1.8;color:rgba(255,255,255,.5);margin-bottom:28px}
+.footer-social{display:flex;gap:12px}
+.footer-social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;transition:all .2s;font-size:13px}
+.footer-social a:hover{border-color:var(--terr);color:var(--terr)}
+.footer-col h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:22px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--terr)}
+.footer-addr{font-size:13px;line-height:2;color:rgba(255,255,255,.5);margin-bottom:18px}
+.footer-phone{font-family:'Fraunces',serif;font-size:20px;color:#fff;text-decoration:none;font-style:italic;display:block;margin-bottom:6px}
+.footer-phone:hover{color:var(--terr)}
+.footer-bottom{padding:22px 60px;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:11px;color:rgba(255,255,255,.35)}
+.footer-bottom-links{display:flex;gap:24px}
+.footer-bottom-links a{font-size:11px;color:rgba(255,255,255,.35);text-decoration:none}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.7)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .tx-hero{grid-template-columns:1fr;min-height:auto}
+  .tx-hero-left{padding:50px 30px}
+  .tx-hero-right{height:60vw}
+  .overview{grid-template-columns:1fr}
+  .ov-label{border-right:none;border-bottom:1px solid var(--border)}
+  .ov-content{padding:40px 30px;grid-template-columns:1fr}
+  .how{padding:60px 30px}
+  .how-header{flex-direction:column;align-items:flex-start;gap:20px}
+  .how-steps{grid-template-columns:1fr 1fr}
+  .step-arrow{display:none}
+  .cond-inner{grid-template-columns:1fr}
+  .cond-sidebar{border-right:none;border-bottom:1px solid var(--border);padding:40px 30px}
+  .cond-grid{padding:30px;grid-template-columns:1fr 1fr}
+  .ba-grid,.testi-grid{grid-template-columns:1fr}
+  .doctor-cta{grid-template-columns:1fr}
+  .doc-right{height:60vw}
+  .faq-inner{grid-template-columns:1fr;gap:40px}
+  .booking{grid-template-columns:1fr;padding:60px 30px}
+  .related-header,.rel-row{grid-template-columns:40px 1fr}
+  .rel-desc,.rel-action{display:none}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .breadcrumb,.nav-inner,.how,.ba-section,.testi,.related,.faq{padding-left:30px;padding-right:30px}
+  .footer-bottom{padding:20px 30px;flex-direction:column;gap:12px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Skin<em>matics</em></a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Treatments</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Doctors</a></li>
+      <li><a href="#">Results</a></li>
+      <li><a href="#">Locations</a></li>
+      <li><a href="#">Blog</a></li>
+    </ul>
+    <a href="#booking" class="btn-terr" style="padding:12px 24px;font-size:10px">Book Consultation</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="#">Home</a>
+  <span>›</span>
+  <a href="#">Treatments</a>
+  <span>›</span>
+  <span class="current">Acne & Scar Correction</span>
+</div>
+
+<!-- HERO -->
+<section class="tx-hero">
+  <div class="tx-hero-left">
+    <div class="tx-hero-tag">
+      <span class="tag-num">01</span>
+      <span class="tag-cat">Skin Concerns</span>
+    </div>
+    <div class="eyebrow">Dermatology Treatment</div>
+    <h1 class="tx-hero-h1">Acne &amp; <em>Scar</em><br>Correction</h1>
+    <p class="tx-hero-desc">Advanced, clinically proven protocols to clear active acne, resurface textural irregularities, and fade post-inflammatory hyperpigmentation — customised to your skin's unique biology.</p>
+    <div class="tx-hero-btns">
+      <a href="#booking" class="btn-terr">Book a Consultation</a>
+      <a href="#howitworks" class="btn-outline">How It Works</a>
+    </div>
+    <div class="tx-hero-stats">
+      <div class="tx-stat">
+        <div class="s-num">94%</div>
+        <div class="s-lbl">Clearance rate<br>within 8 weeks</div>
+      </div>
+      <div class="tx-stat">
+        <div class="s-num">3–6</div>
+        <div class="s-lbl">Average sessions<br>for full results</div>
+      </div>
+      <div class="tx-stat">
+        <div class="s-num">2.8K+</div>
+        <div class="s-lbl">Patients treated<br>successfully</div>
+      </div>
+    </div>
+  </div>
+  <div class="tx-hero-right">
+    <img class="tx-hero-img" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=900&q=80" alt="Acne treatment">
+    <div class="tx-hero-overlay"></div>
+    <div class="tx-badge">
+      <div class="b-num">15+</div>
+      <div class="b-text">Years of Excellence</div>
+    </div>
+    <div class="tx-hero-caption">
+      <p>Results visible from</p>
+      <h3>Session one onwards</h3>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-wrap">
+    <span class="ti">Acne & Scar Correction</span><span class="ts">—</span>
+    <span class="ti">Comedone Extraction</span><span class="ts">—</span>
+    <span class="ti">Chemical Peels</span><span class="ts">—</span>
+    <span class="ti">Laser Resurfacing</span><span class="ts">—</span>
+    <span class="ti">Microneedling RF</span><span class="ts">—</span>
+    <span class="ti">PRP Therapy</span><span class="ts">—</span>
+    <span class="ti">Scar Subcision</span><span class="ts">—</span>
+    <span class="ti">Dermal Fillers</span><span class="ts">—</span>
+    <span class="ti">Acne & Scar Correction</span><span class="ts">—</span>
+    <span class="ti">Comedone Extraction</span><span class="ts">—</span>
+    <span class="ti">Chemical Peels</span><span class="ts">—</span>
+    <span class="ti">Laser Resurfacing</span><span class="ts">—</span>
+    <span class="ti">Microneedling RF</span><span class="ts">—</span>
+    <span class="ti">PRP Therapy</span><span class="ts">—</span>
+    <span class="ti">Scar Subcision</span><span class="ts">—</span>
+    <span class="ti">Dermal Fillers</span><span class="ts">—</span>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="overview">
+  <div class="ov-label">
+    <div>
+      <div class="eyebrow">Overview</div>
+      <div class="ov-info-grid">
+        <div class="ov-info-item">
+          <div class="oi-label">Treatment Duration</div>
+          <div class="oi-val">45 – 90 minutes per session</div>
+        </div>
+        <div class="ov-info-item">
+          <div class="oi-label">Recommended Sessions</div>
+          <div class="oi-val">3 – 6 sessions, spaced 4 weeks apart</div>
+        </div>
+        <div class="ov-info-item">
+          <div class="oi-label">Downtime</div>
+          <div class="oi-val">Minimal — return to daily life same day</div>
+        </div>
+        <div class="ov-info-item">
+          <div class="oi-label">Skin Types</div>
+          <div class="oi-val">Suitable for all Fitzpatrick types I – VI</div>
+        </div>
+        <div class="ov-info-item">
+          <div class="oi-label">Starting From</div>
+          <div class="oi-val">₹3,500 per session</div>
+        </div>
+      </div>
+    </div>
+    <a href="#booking" class="btn-terr" style="align-self:flex-start;margin-top:36px">Book Now</a>
+  </div>
+  <div class="ov-content">
+    <h2>A <em>science-first</em> approach to<br>clearer, smoother skin</h2>
+    <div class="ov-col">
+      <p>Acne is one of the most complex conditions in dermatology — influenced by genetics, hormones, microbiome, and environmental stressors. At Skinmatics, we begin with a comprehensive skin analysis and history to understand the root cause of your acne before recommending a protocol.</p>
+      <p>Our approach combines pharmaceutical-grade topical agents with in-clinic modalities, ensuring each session builds on the last for compounding results.</p>
+    </div>
+    <div class="ov-col">
+      <p>Post-inflammatory hyperpigmentation and scarring — the marks acne leaves behind — require targeted resurfacing treatments. We employ layered techniques: chemical peels to accelerate cell turnover, radiofrequency microneedling for collagen remodelling, and laser resurfacing for deeper textural correction.</p>
+      <p>All treatments are performed exclusively by our board-certified dermatologists, never delegated, ensuring clinical precision at every visit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="howitworks">
+  <div class="how-header reveal">
+    <div>
+      <div class="eyebrow">The Process</div>
+      <h2 class="section-title">How your treatment<br><em>journey</em> unfolds</h2>
+    </div>
+    <a href="#booking" class="btn-outline">Start your journey →</a>
+  </div>
+  <div class="how-steps">
+    <div class="step reveal reveal-delay-1">
+      <div class="step-num">01</div>
+      <h3 class="step-title">Skin Analysis &amp; Diagnosis</h3>
+      <p class="step-desc">A detailed consultation with our dermatologist: skin scoring, comedone mapping, PIH grading, and scar classification to build your personalised protocol.</p>
+      <div class="step-arrow"><svg viewBox="0 0 12 12"><path d="M2 6h8M7 3l3 3-3 3"/></svg></div>
+    </div>
+    <div class="step reveal reveal-delay-2">
+      <div class="step-num">02</div>
+      <h3 class="step-title">Customised Treatment Plan</h3>
+      <p class="step-desc">We design a multi-modal protocol — combining in-clinic procedures with a curated home-care regimen — matched precisely to your skin type and concern severity.</p>
+      <div class="step-arrow"><svg viewBox="0 0 12 12"><path d="M2 6h8M7 3l3 3-3 3"/></svg></div>
+    </div>
+    <div class="step reveal reveal-delay-3">
+      <div class="step-num">03</div>
+      <h3 class="step-title">In-Clinic Procedures</h3>
+      <p class="step-desc">Depending on your plan: chemical peels, RF microneedling, laser sessions, comedone extraction, or combination therapies — all performed by certified dermatologists.</p>
+      <div class="step-arrow"><svg viewBox="0 0 12 12"><path d="M2 6h8M7 3l3 3-3 3"/></svg></div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <h3 class="step-title">Review &amp; Refinement</h3>
+      <p class="step-desc">Photographic progress tracking at every visit. We reassess and adapt your protocol based on skin response, ensuring we continually optimise for your best result.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITIONS ADDRESSED -->
+<section class="conditions">
+  <div class="cond-inner">
+    <div class="cond-sidebar">
+      <div class="eyebrow">Conditions Treated</div>
+      <p>Our acne and scar correction protocols address the full spectrum of concern types — from hormonal breakouts and blackheads to deep ice-pick scars and dark marks.</p>
+    </div>
+    <div class="cond-grid">
+      <div class="cond-card">
+        <div class="cond-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="cond-name">Cystic Acne</div>
+        <div class="cond-short">Deep, painful nodules and cysts requiring prescription-strength intervention</div>
+      </div>
+      <div class="cond-card">
+        <div class="cond-icon"><svg viewBox="0 0 24 24"><path d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9"/><path d="M3 12c0-4.97 4.03-9 9-9"/></svg></div>
+        <div class="cond-name">Hormonal Breakouts</div>
+        <div class="cond-short">Cyclical acne along the jawline, chin, and lower cheeks tied to hormonal fluctuations</div>
+      </div>
+      <div class="cond-card">
+        <div class="cond-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <div class="cond-name">Post-Inflammatory Pigmentation</div>
+        <div class="cond-short">Dark marks and discolouration left behind after acne lesions have healed</div>
+      </div>
+      <div class="cond-card">
+        <div class="cond-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <div class="cond-name">Ice Pick Scars</div>
+        <div class="cond-short">Narrow, deep channels in the skin requiring subcision and laser resurfacing</div>
+      </div>
+      <div class="cond-card">
+        <div class="cond-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+        <div class="cond-name">Rolling Scars</div>
+        <div class="cond-short">Broad, wavy depressions giving the skin an uneven, undulating appearance</div>
+      </div>
+      <div class="cond-card">
+        <div class="cond-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="cond-name">Boxcar Scars</div>
+        <div class="cond-short">Wide, defined depressions with sharp edges, responding well to fractional laser</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="ba-section">
+  <div class="ba-header reveal">
+    <div class="eyebrow">Patient Results</div>
+    <h2 class="section-title">Real results from <em>real</em> patients</h2>
+  </div>
+  <div class="ba-grid" style="margin-top:40px">
+    
+    <!-- Card 1 -->
+    <div class="ba-card">
+      <div class="ba-slider" id="slider1">
+        <div class="ba-before"><img src="https://images.unsplash.com/photo-1570824104453-508955ab713e?w=600&q=70" alt="Before"></div>
+        <div class="ba-after" id="after1"><img src="https://images.unsplash.com/photo-1606902965551-dce093cda6e7?w=600&q=70" alt="After"></div>
+        <div class="ba-divider" id="div1">
+          <div class="ba-divider-handle"><svg viewBox="0 0 16 16"><path d="M5 4l-4 4 4 4M11 4l4 4-4 4" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
+        </div>
+        <span class="ba-label-before">Before</span>
+        <span class="ba-label-after">After</span>
+      </div>
+      <div class="ba-info">
+        <div class="ba-treatment">Cystic Acne + PIH</div>
+        <div class="ba-result">Full clearance with visible brightening</div>
+        <div class="ba-sessions">6 sessions · Chemical Peel + RF Microneedling</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="ba-card">
+      <div class="ba-slider" id="slider2">
+        <div class="ba-before"><img src="https://images.unsplash.com/photo-1559181567-c3190b5cc82c?w=600&q=70" alt="Before"></div>
+        <div class="ba-after" id="after2"><img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=70" alt="After"></div>
+        <div class="ba-divider" id="div2">
+          <div class="ba-divider-handle"><svg viewBox="0 0 16 16"><path d="M5 4l-4 4 4 4M11 4l4 4-4 4" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
+        </div>
+        <span class="ba-label-before">Before</span>
+        <span class="ba-label-after">After</span>
+      </div>
+      <div class="ba-info">
+        <div class="ba-treatment">Rolling & Boxcar Scars</div>
+        <div class="ba-result">Significantly smoother texture</div>
+        <div class="ba-sessions">5 sessions · Subcision + Fractional Laser</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="ba-card">
+      <div class="ba-slider" id="slider3">
+        <div class="ba-before"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=70" alt="Before"></div>
+        <div class="ba-after" id="after3"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=70" alt="After"></div>
+        <div class="ba-divider" id="div3">
+          <div class="ba-divider-handle"><svg viewBox="0 0 16 16"><path d="M5 4l-4 4 4 4M11 4l4 4-4 4" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
+        </div>
+        <span class="ba-label-before">Before</span>
+        <span class="ba-label-after">After</span>
+      </div>
+      <div class="ba-info">
+        <div class="ba-treatment">Hormonal Acne + Dark Marks</div>
+        <div class="ba-result">Clear skin, even skin tone restored</div>
+        <div class="ba-sessions">4 sessions · PRP + Chemical Peel</div>
+      </div>
+    </div>
+
+  </div>
+  <p style="font-size:11px;color:var(--muted);margin-top:18px;letter-spacing:.3px">* Individual results may vary. All images taken at Skinmatics clinics under consistent lighting.</p>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="testi-header reveal">
+    <div>
+      <div class="eyebrow">Patient Stories</div>
+      <h2 class="section-title">What our patients <em>say</em></h2>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="text-align:right">
+        <div style="font-family:'Fraunces',serif;font-size:32px;color:var(--terr)">4.9</div>
+        <div style="font-size:11px;color:var(--muted)">Google Rating · 340+ Reviews</div>
+      </div>
+    </div>
+  </div>
+  <div class="testi-grid" style="margin-top:40px">
+    <div class="t-card">
+      <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+      <p class="t-quote">"After struggling with cystic acne for nearly a decade, I saw a visible difference within the first two sessions. The dermatologist explained everything so clearly and the protocol was genuinely personalised to my skin."</p>
+      <div class="t-patient">
+        <div class="t-avatar">P</div>
+        <div>
+          <div class="t-name">Priya Menon</div>
+          <div class="t-tag">Cystic Acne Treatment</div>
+          <div class="t-verified"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 8 6.5 11.5 13 5"/></svg> Verified patient</div>
+        </div>
+      </div>
+    </div>
+    <div class="t-card">
+      <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+      <p class="t-quote">"The ice pick scars I've had since college have faded dramatically. The subcision + laser combination was something I hadn't found elsewhere — truly results-driven without aggressive downtime."</p>
+      <div class="t-patient">
+        <div class="t-avatar">R</div>
+        <div>
+          <div class="t-name">Rahul Nair</div>
+          <div class="t-tag">Scar Correction</div>
+          <div class="t-verified"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 8 6.5 11.5 13 5"/></svg> Verified patient</div>
+        </div>
+      </div>
+    </div>
+    <div class="t-card">
+      <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+      <p class="t-quote">"The dark marks that wouldn't budge for years are now barely visible. What stood out was how the doctors continuously tracked my progress and adjusted the peel strength each session."</p>
+      <div class="t-patient">
+        <div class="t-avatar">A</div>
+        <div>
+          <div class="t-name">Ananya Sharma</div>
+          <div class="t-tag">PIH + Brightening</div>
+          <div class="t-verified"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 8 6.5 11.5 13 5"/></svg> Verified patient</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTOR CTA -->
+<section class="doctor-cta">
+  <div class="doc-left">
+    <div class="eyebrow">Your Care Team</div>
+    <h2>Treated by <em>specialists</em>,<br>not technicians</h2>
+    <p>Every Skinmatics consultation and treatment is conducted by board-certified dermatologists. No delegation. No shortcuts. Your skin deserves the highest level of clinical attention.</p>
+    <div class="doc-card-row">
+      <div class="doc-mini">
+        <div class="doc-mini-img"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&q=70" alt="Dr. Deepa Ramesh"></div>
+        <div>
+          <div class="doc-mini-name">Dr. Deepa Ramesh</div>
+          <div class="doc-mini-qual">MD Dermatology, AIIMS · Acne Specialist</div>
+        </div>
+      </div>
+      <div class="doc-mini">
+        <div class="doc-mini-img"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=70" alt="Dr. Arjun Krishnan"></div>
+        <div>
+          <div class="doc-mini-name">Dr. Arjun Krishnan</div>
+          <div class="doc-mini-qual">DNB Dermato-Surgery · Scar Revision</div>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="btn-outline">Meet all our doctors →</a>
+  </div>
+  <div class="doc-right">
+    <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=900&q=80" alt="Skinmatics clinic">
+    <div class="doc-right-overlay"></div>
+    <div class="doc-right-content">
+      <div class="eyebrow">Our Clinics</div>
+      <h3>State-of-the-art facilities<br>across 4 Bengaluru locations</h3>
+      <p>Indiranagar · Koramangala · Whitefield · JP Nagar</p>
+      <a href="#" class="btn-terr">Find nearest clinic</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="faq-left reveal">
+      <div class="eyebrow">Common Questions</div>
+      <h2>Everything you want <em>to know</em></h2>
+      <p>We believe informed patients get better results. Here are the questions we hear most often about acne and scar correction.</p>
+      <a href="#booking" class="btn-terr">Ask our doctors directly</a>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How many sessions will I need to see results?</span>
+          <span class="faq-toggle">−</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner"><p>Most patients notice improvement in skin clarity and texture within 2–3 sessions. For active acne, we typically recommend a minimum course of 4–6 sessions spaced 3–4 weeks apart. Deeper scarring may require 6–8 sessions depending on scar type and severity. We photograph your skin at every visit to track and discuss your progress.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Is the treatment painful?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner"><p>Discomfort levels vary by modality. Chemical peels produce a mild tingling sensation. RF microneedling is performed with topical anaesthetic cream applied 30 minutes prior, making the procedure well-tolerated. Laser treatments may feel like brief snapping warmth. We always prioritise your comfort and adjust intensity accordingly.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What is the downtime after treatment?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner"><p>Most of our acne treatments carry minimal downtime — mild redness for a few hours. Chemical peels may cause 2–3 days of gentle flaking. After RF microneedling, skin appears pink for 24–48 hours. Fractional laser resurfacing carries 4–7 days of social downtime. We provide detailed aftercare instructions and a tailored skincare kit post-procedure.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Are the results permanent?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner"><p>Scar correction results are long-lasting — the collagen remodelling from microneedling and laser is permanent. Active acne, however, is a chronic condition influenced by hormones and lifestyle factors. We provide guidance on maintenance protocols and home-care regimens to sustain your results and prevent future breakouts.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Is this safe for darker skin tones?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner"><p>Absolutely. Our dermatologists are highly experienced in treating Fitzpatrick types IV–VI, which are most common in South Asian populations and most susceptible to post-inflammatory hyperpigmentation. We select peels, laser wavelengths, and parameters specifically calibrated for melanin-rich skin to ensure safety and efficacy.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="booking-left">
+    <div class="eyebrow">Book a Consultation</div>
+    <h2>Begin your journey to <em>clearer</em> skin</h2>
+    <p>Your first consultation includes a comprehensive skin analysis, diagnosis, and personalised treatment roadmap — no obligation to proceed. Our dermatologists take the time to understand your history and goals before recommending anything.</p>
+    <a href="tel:+918067890000" class="btn-terr">Call +91 80 6789 0000</a>
+    <a href="#" class="btn-outline" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.3);margin-left:0;margin-top:12px;display:inline-block">WhatsApp Us</a>
+  </div>
+  <div class="booking-form">
+    <h3>Request a consultation</h3>
+    <div class="form-row">
+      <div class="form-field">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your name">
+      </div>
+      <div class="form-field">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+91 98765 43210">
+      </div>
+    </div>
+    <div class="form-row single">
+      <div class="form-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label>Primary Concern</label>
+        <select>
+          <option>Active Acne</option>
+          <option>Acne Scars</option>
+          <option>Post-Inflammatory Pigmentation</option>
+          <option>Both Acne & Scars</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Preferred Clinic</label>
+        <select>
+          <option>Indiranagar</option>
+          <option>Koramangala</option>
+          <option>Whitefield</option>
+          <option>JP Nagar</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row single">
+      <div class="form-field">
+        <label>Preferred Date</label>
+        <input type="date">
+      </div>
+    </div>
+    <button class="form-submit">Request Consultation</button>
+    <p class="form-note">Our team will confirm your appointment within 2 hours during clinic hours.</p>
+  </div>
+</section>
+
+<!-- RELATED TREATMENTS -->
+<section class="related">
+  <div class="related-header reveal">
+    <div>
+      <div class="eyebrow">Explore More</div>
+      <h2 class="section-title">Related <em>treatments</em></h2>
+    </div>
+    <a href="#" class="btn-outline">All Treatments →</a>
+  </div>
+  <div class="rel-rows">
+    <a class="rel-row" href="#">
+      <span class="rel-n">02</span>
+      <span class="rel-name">Anti-Ageing Aesthetics</span>
+      <span class="rel-desc">Botox, fillers, skin boosters and collagen-stimulating treatments to restore youthful facial volume and reduce fine lines</span>
+      <span class="rel-action">Explore <svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+    </a>
+    <a class="rel-row" href="#">
+      <span class="rel-n">03</span>
+      <span class="rel-name">Laser Hair Reduction</span>
+      <span class="rel-desc">Permanent reduction of unwanted body and facial hair with diode laser technology, safe for all Indian skin tones</span>
+      <span class="rel-action">Explore <svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+    </a>
+    <a class="rel-row" href="#">
+      <span class="rel-n">04</span>
+      <span class="rel-name">Pigmentation Therapy</span>
+      <span class="rel-desc">Targeted treatment for melasma, sun damage, and uneven skin tone using Q-switched lasers and depigmentation peels</span>
+      <span class="rel-action">Explore <svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+    </a>
+    <a class="rel-row" href="#">
+      <span class="rel-n">05</span>
+      <span class="rel-name">Hair Restoration</span>
+      <span class="rel-desc">PRP, GFC, and low-level laser therapy protocols to address thinning hair and promote scalp health and regrowth</span>
+      <span class="rel-action">Explore <svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-col">
+      <div class="footer-logo">Skin<em>matics</em></div>
+      <p class="footer-tagline">Bengaluru's most trusted dermatology practice. Science-led, results-driven, always humane.</p>
+      <div class="footer-social">
+        <a href="#">in</a>
+        <a href="#">ig</a>
+        <a href="#">yt</a>
+        <a href="#">fb</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Treatments</h4>
+      <ul class="footer-links">
+        <li><a href="#">Acne & Scar Correction</a></li>
+        <li><a href="#">Anti-Ageing Aesthetics</a></li>
+        <li><a href="#">Laser Hair Reduction</a></li>
+        <li><a href="#">Pigmentation Therapy</a></li>
+        <li><a href="#">Hair Restoration</a></li>
+        <li><a href="#">Chemical Peels</a></li>
+        <li><a href="#">Botox & Fillers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="#">About Skinmatics</a></li>
+        <li><a href="#">Our Dermatologists</a></li>
+        <li><a href="#">Our Clinics</a></li>
+        <li><a href="#">Patient Results</a></li>
+        <li><a href="#">Blog & Skin Library</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Koramangala Clinic</h4>
+      <p class="footer-addr">12, 80 Feet Rd, 4th Block<br>Koramangala, Bengaluru<br>Karnataka 560034</p>
+      <a class="footer-phone" href="tel:+918067890000">+91 80 6789 0000</a>
+      <ul class="footer-links" style="margin-top:16px">
+        <li><a href="#">Find other locations →</a></li>
+        <li><a href="#">Book online →</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Skinmatics Dermatology Pvt. Ltd. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Medical Disclaimer</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── FAQ toggle
+function toggleFaq(el){
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>{
+    i.classList.remove('open');
+    i.querySelector('.faq-toggle').textContent='+';
+  });
+  if(!isOpen){
+    item.classList.add('open');
+    el.querySelector('.faq-toggle').textContent='−';
+  }
+}
+
+// ── Scroll reveal
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── Before / After sliders
+function initSlider(sliderId, afterId, divId){
+  const slider = document.getElementById(sliderId);
+  const after = document.getElementById(afterId);
+  const divider = document.getElementById(divId);
+  if(!slider) return;
+  let dragging = false;
+  function setPos(x){
+    const rect = slider.getBoundingClientRect();
+    let pct = Math.max(5, Math.min(95, (x - rect.left)/rect.width*100));
+    after.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+    divider.style.left = pct+'%';
+  }
+  slider.addEventListener('mousedown',e=>{dragging=true;setPos(e.clientX)});
+  slider.addEventListener('touchstart',e=>{dragging=true;setPos(e.touches[0].clientX)},{passive:true});
+  window.addEventListener('mousemove',e=>{if(dragging)setPos(e.clientX)});
+  window.addEventListener('touchmove',e=>{if(dragging)setPos(e.touches[0].clientX)},{passive:true});
+  window.addEventListener('mouseup',()=>dragging=false);
+  window.addEventListener('touchend',()=>dragging=false);
+}
+initSlider('slider1','after1','div1');
+initSlider('slider2','after2','div2');
+initSlider('slider3','after3','div3');
+
+// ── Sticky nav shrink
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.style.boxShadow = window.scrollY>20 ? '0 2px 20px rgba(0,0,0,.08)' : '';
+});
+</script>
+
+</body>
+</html>
