@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Skinmatics — Bengaluru's Premier Dermatology Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ivory:#FAF8F3;
+  --sand:#F2EDE4;
+  --warm:#EDE6D9;
+  --terr:#A8582A;
+  --terr2:#C4754A;
+  --sage:#5A7A5E;
+  --ink:#1A1410;
+  --mid:#4A3F36;
+  --muted:#8A7E74;
+  --border:#DDD5C8;
+  --border2:#C9BFB0;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ivory);color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+
+/* ── UTIL ── */
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--terr);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--terr);flex-shrink:0}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(32px,3.8vw,52px);font-weight:300;line-height:1.1}
+.section-title em{font-style:italic;color:var(--terr)}
+
+/* ── BUTTONS ── */
+.btn-terr{display:inline-block;background:var(--terr);color:#fff;padding:15px 38px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;text-decoration:none;transition:background .3s;border:none;cursor:pointer}
+.btn-terr:hover{background:var(--terr2)}
+.btn-outline{display:inline-block;border:1.5px solid var(--ink);color:var(--ink);padding:14px 36px;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-outline:hover{border-color:var(--terr);color:var(--terr)}
+
+/* ── TOP BAR ── */
+.top-bar{background:var(--ink);padding:10px 60px;display:flex;justify-content:space-between;align-items:center}
+.top-bar p{font-size:11px;letter-spacing:.5px;color:rgba(255,255,255,.5)}
+.top-bar-links{display:flex;gap:24px}
+.top-bar-links a{font-size:11px;color:rgba(255,255,255,.5);text-decoration:none;letter-spacing:.5px;transition:color .2s}
+.top-bar-links a:hover{color:var(--terr)}
+.top-bar-links span{color:rgba(255,255,255,.2)}
+
+/* ── NAV ── */
+#nav{position:sticky;top:0;z-index:200;background:var(--ivory);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:72px}
+.nav-logo{font-family:'Fraunces',serif;font-size:22px;font-weight:300;color:var(--ink);text-decoration:none;letter-spacing:.5px}
+.nav-logo em{font-style:italic;color:var(--terr)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:13px;color:var(--mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--terr)}
+.nav-links a.active{color:var(--terr)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.nav-phone{font-family:'Fraunces',serif;font-size:15px;color:var(--ink);text-decoration:none;font-style:italic;transition:color .2s}
+.nav-phone:hover{color:var(--terr)}
+
+/* ── HERO ── */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:90vh;border-bottom:1px solid var(--border)}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:100px 60px;border-right:1px solid var(--border);position:relative}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.hero-eyebrow-line{width:28px;height:1px;background:var(--terr)}
+.hero-eyebrow-text{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--terr)}
+.hero-h1{font-family:'Fraunces',serif;font-size:clamp(48px,6vw,90px);font-weight:300;line-height:1.0;margin-bottom:12px}
+.hero-h1 em{font-style:italic;color:var(--terr)}
+.hero-sub{font-family:'Fraunces',serif;font-size:clamp(20px,2.5vw,34px);font-weight:300;color:var(--muted);margin-bottom:36px;line-height:1.3}
+.hero-desc{font-size:15px;line-height:1.95;color:var(--mid);max-width:480px;margin-bottom:44px}
+.hero-btns{display:flex;gap:14px;margin-bottom:60px}
+.hero-trust{display:flex;align-items:center;gap:30px;padding-top:36px;border-top:1px solid var(--border)}
+.trust-item{display:flex;align-items:center;gap:10px}
+.trust-item .t-icon{width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trust-item .t-icon svg{width:16px;height:16px;stroke:var(--terr);fill:none;stroke-width:1.5}
+.trust-item .t-text{font-size:11px;color:var(--mid);line-height:1.5}
+.trust-item .t-text strong{display:block;font-size:12px;color:var(--ink);font-weight:500}
+
+.hero-right{position:relative;overflow:hidden;background:var(--sand)}
+.hero-right-img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-right-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(26,20,16,.6) 100%)}
+.hero-badge{position:absolute;top:40px;right:40px;background:var(--terr);color:#fff;padding:20px 24px;text-align:center}
+.hero-badge .b-num{font-family:'Fraunces',serif;font-size:38px;line-height:1;font-style:italic}
+.hero-badge .b-text{font-size:9px;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-top:4px;line-height:1.5}
+.hero-caption{position:absolute;bottom:0;left:0;right:0;padding:40px;border-top:1px solid rgba(255,255,255,.15)}
+.hero-caption-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}
+.hero-caption-text{font-family:'Fraunces',serif;font-size:24px;font-weight:300;color:#fff;font-style:italic;margin-bottom:16px}
+.hero-caption-stats{display:flex;gap:0}
+.hc-stat{padding:12px 24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-right:none}
+.hc-stat:first-child{padding-left:0;background:transparent;border:none;border-right:1px solid rgba(255,255,255,.2);padding-right:24px}
+.hc-stat .hs-num{font-family:'Fraunces',serif;font-size:22px;color:#fff;line-height:1}
+.hc-stat .hs-lbl{font-size:10px;color:rgba(255,255,255,.6);letter-spacing:.5px;margin-top:3px}
+
+/* ── TICKER ── */
+.ticker{background:var(--terr);padding:12px 0;overflow:hidden}
+.ticker-wrap{display:flex;animation:ticker 30s linear infinite;width:max-content}
+.ti{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px}
+.ts{color:rgba(255,255,255,.4);font-size:12px}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── INTRO STRIP ── */
+.intro-strip{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid var(--border)}
+.intro-cell{padding:40px;border-right:1px solid var(--border);text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;transition:background .2s}
+.intro-cell:last-child{border-right:none}
+.intro-cell:hover{background:var(--sand)}
+.intro-num{font-family:'Fraunces',serif;font-size:40px;font-weight:300;color:var(--terr);line-height:1;font-style:italic}
+.intro-label{font-size:12px;color:var(--mid);line-height:1.6;text-align:center}
+.intro-label strong{display:block;font-size:14px;color:var(--ink);font-weight:500;margin-bottom:4px}
+
+/* ── ABOUT SPLIT ── */
+.about-split{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+.about-left{background:var(--ink);padding:90px 60px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.about-left::before{content:'S';font-family:'Fraunces',serif;font-size:400px;font-weight:300;color:rgba(255,255,255,.03);position:absolute;right:-40px;top:50%;transform:translateY(-50%);line-height:1;pointer-events:none;font-style:italic}
+.about-left .eyebrow::before{background:var(--terr)}
+.about-left .eyebrow{color:var(--terr)}
+.about-left h2{font-family:'Fraunces',serif;font-size:clamp(30px,3.5vw,50px);font-weight:300;color:#fff;line-height:1.1;margin-bottom:24px}
+.about-left h2 em{font-style:italic;color:var(--terr)}
+.about-left p{font-size:14px;line-height:2;color:rgba(255,255,255,.6);margin-bottom:36px;max-width:440px}
+.about-pillars{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.1);margin-top:40px}
+.pillar{padding:24px;background:rgba(255,255,255,.04)}
+.pillar-title{font-family:'Fraunces',serif;font-size:15px;font-weight:300;color:#fff;margin-bottom:6px}
+.pillar-desc{font-size:12px;color:rgba(255,255,255,.45);line-height:1.7}
+
+.about-right{padding:90px 60px;display:flex;flex-direction:column;justify-content:center;background:var(--sand)}
+.about-img-wrap{position:relative;margin-bottom:40px}
+.about-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.about-img-badge{position:absolute;bottom:-20px;right:30px;background:var(--ivory);border:1px solid var(--border);padding:16px 24px;text-align:center}
+.about-img-badge .ab-num{font-family:'Fraunces',serif;font-size:32px;color:var(--terr);font-style:italic;line-height:1}
+.about-img-badge .ab-text{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.about-right-text{margin-top:20px}
+.about-right-text h3{font-family:'Fraunces',serif;font-size:clamp(22px,2.5vw,34px);font-weight:300;margin-bottom:16px;line-height:1.3}
+.about-right-text h3 em{font-style:italic;color:var(--terr)}
+.about-right-text p{font-size:14px;line-height:2;color:var(--mid);margin-bottom:20px}
+
+/* ── TREATMENTS ── */
+.treatments{padding:90px 60px;background:var(--ivory);border-bottom:1px solid var(--border)}
+.treatments-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:50px}
+.tx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-bottom:2px}
+.tx-grid-bottom{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border)}
+.tx-card{background:var(--sand);padding:0;overflow:hidden;position:relative;cursor:pointer;display:flex;flex-direction:column}
+.tx-card-img{aspect-ratio:4/3;overflow:hidden;position:relative}
+.tx-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:block}
+.tx-card:hover .tx-card-img img{transform:scale(1.04)}
+.tx-card-num{position:absolute;top:20px;left:20px;font-family:'Fraunces',serif;font-size:13px;color:#fff;font-style:italic;background:rgba(26,20,16,.4);padding:4px 10px}
+.tx-card-body{padding:24px 26px;background:var(--ivory);flex:1;display:flex;flex-direction:column;border-top:1px solid var(--border)}
+.tx-card-cat{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--terr);margin-bottom:8px}
+.tx-card-name{font-family:'Fraunces',serif;font-size:20px;font-weight:300;margin-bottom:10px;line-height:1.2}
+.tx-card-desc{font-size:12px;line-height:1.8;color:var(--muted);flex:1;margin-bottom:18px}
+.tx-card-link{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--terr);display:flex;align-items:center;gap:8px;text-decoration:none;transition:gap .2s}
+.tx-card:hover .tx-card-link{gap:12px}
+.tx-card-link svg{width:14px;height:14px;stroke:var(--terr);fill:none;stroke-width:2}
+
+/* ── MARQUEE / TICKER 2 ── */
+.marquee-sage{background:var(--sage);padding:12px 0;overflow:hidden}
+.marquee-sage .ticker-wrap{animation:ticker 35s linear infinite}
+.ms-item{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.8);padding:0 28px}
+.ms-sep{color:rgba(255,255,255,.3);font-size:12px}
+
+/* ── DOCTORS ── */
+.doctors{padding:90px 0;background:var(--sand);border-bottom:1px solid var(--border)}
+.doctors-head{padding:0 60px;display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:50px}
+.doctors-scroll{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.doc-card{border-right:1px solid var(--border);overflow:hidden;position:relative}
+.doc-card:last-child{border-right:none}
+.doc-card-img{aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--warm)}
+.doc-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.doc-card:hover .doc-card-img img{transform:scale(1.03)}
+.doc-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,20,16,.7) 0%,transparent 50%)}
+.doc-card-body{position:absolute;bottom:0;left:0;right:0;padding:28px}
+.doc-card-name{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:#fff;font-style:italic;margin-bottom:4px}
+.doc-card-qual{font-size:11px;color:rgba(255,255,255,.65);letter-spacing:.5px;margin-bottom:14px}
+.doc-card-spec{display:flex;flex-wrap:wrap;gap:6px}
+.doc-card-spec span{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.9);background:rgba(168,88,42,.7);padding:4px 10px}
+
+/* ── PROCESS ── */
+.process{padding:90px 60px;background:var(--ivory);border-bottom:1px solid var(--border)}
+.process-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.proc-step{padding:40px 32px;border-left:1px solid var(--border);position:relative}
+.proc-step:last-child{border-right:1px solid var(--border)}
+.proc-num{font-family:'Fraunces',serif;font-size:52px;font-weight:300;color:var(--border2);line-height:1;margin-bottom:20px;font-style:italic}
+.proc-title{font-family:'Fraunces',serif;font-size:20px;font-weight:300;margin-bottom:12px}
+.proc-desc{font-size:13px;line-height:1.9;color:var(--mid)}
+.proc-arrow{position:absolute;top:40px;right:-14px;width:28px;height:28px;background:var(--terr);display:flex;align-items:center;justify-content:center;z-index:1}
+.proc-arrow svg{width:12px;height:12px;fill:#fff}
+.proc-step:last-child .proc-arrow{display:none}
+
+/* ── RESULTS / STATS ── */
+.stats-section{background:var(--warm);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-inner{display:grid;grid-template-columns:repeat(5,1fr)}
+.stat-block{padding:60px 40px;border-right:1px solid var(--border);text-align:center}
+.stat-block:last-child{border-right:none}
+.stat-block:hover{background:var(--sand)}
+.stat-big{font-family:'Fraunces',serif;font-size:clamp(36px,4vw,56px);font-weight:300;color:var(--terr);font-style:italic;line-height:1;margin-bottom:10px}
+.stat-lbl{font-size:12px;color:var(--mid);line-height:1.6}
+
+/* ── TESTIMONIALS ── */
+.testi{background:var(--sand);padding:90px 60px;border-top:1px solid var(--border)}
+.testi-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:50px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.t-card{background:var(--ivory);padding:36px;display:flex;flex-direction:column;gap:20px}
+.t-stars{display:flex;gap:4px}
+.t-star{color:var(--terr);font-size:16px}
+.t-quote{font-family:'Fraunces',serif;font-size:17px;font-style:italic;font-weight:300;line-height:1.65;color:var(--ink)}
+.t-patient{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid var(--border)}
+.t-avatar{width:40px;height:40px;border-radius:50%;background:var(--warm);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:17px;color:var(--terr)}
+.t-name{font-size:13px;font-weight:500;color:var(--ink)}
+.t-tag{font-size:11px;color:var(--muted);margin-top:2px}
+.t-verified{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--sage);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+
+/* ── WHY SKINMATICS ── */
+.why{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border)}
+.why-left{padding:90px 60px;background:var(--sand);border-right:1px solid var(--border)}
+.why-list{display:flex;flex-direction:column;margin-top:40px}
+.why-item{display:grid;grid-template-columns:56px 1fr;gap:0;padding:24px 0;border-top:1px solid var(--border);align-items:start}
+.why-item:last-child{border-bottom:1px solid var(--border)}
+.why-item-num{font-family:'Fraunces',serif;font-size:13px;color:var(--terr);font-style:italic;padding-top:2px}
+.why-item-body{}
+.why-item-title{font-family:'Fraunces',serif;font-size:18px;font-weight:300;margin-bottom:8px}
+.why-item-desc{font-size:13px;line-height:1.85;color:var(--mid)}
+.why-right{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+.why-img-block{overflow:hidden;position:relative}
+.why-img-block img{width:100%;height:100%;object-fit:cover;display:block}
+.why-img-block-overlay{position:absolute;inset:0;background:rgba(26,20,16,.35);display:flex;align-items:flex-end;padding:24px}
+.why-img-block-label{font-family:'Fraunces',serif;font-size:18px;color:#fff;font-style:italic}
+.why-full{grid-column:1/-1}
+
+/* ── LOCATIONS ── */
+.locations{padding:90px 60px;background:var(--ivory);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.locations-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:50px}
+.locations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.loc-card{background:var(--sand);padding:36px;position:relative;overflow:hidden;transition:background .2s}
+.loc-card:hover{background:var(--warm)}
+.loc-card-num{font-family:'Fraunces',serif;font-size:80px;font-weight:300;color:var(--border);line-height:1;position:absolute;right:20px;bottom:-10px;font-style:italic;pointer-events:none}
+.loc-card-city{font-family:'Fraunces',serif;font-size:26px;font-weight:300;margin-bottom:8px}
+.loc-card-area{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terr);margin-bottom:16px}
+.loc-card-addr{font-size:13px;line-height:2;color:var(--mid);margin-bottom:24px}
+.loc-card-link{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--terr);display:flex;align-items:center;gap:8px;text-decoration:none}
+.loc-card-link svg{width:14px;height:14px;stroke:var(--terr);fill:none;stroke-width:2;transition:transform .2s}
+.loc-card:hover .loc-card-link svg{transform:translateX(4px)}
+
+/* ── BOOKING CTA ── */
+.booking{background:var(--ink);padding:90px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.booking-left .eyebrow::before{background:var(--terr)}
+.booking-left .eyebrow{color:var(--terr);margin-bottom:28px}
+.booking-left h2{font-family:'Fraunces',serif;font-size:clamp(30px,3.5vw,52px);font-weight:300;color:#fff;line-height:1.1;margin-bottom:20px}
+.booking-left h2 em{font-style:italic;color:var(--terr)}
+.booking-left p{font-size:14px;line-height:1.9;color:rgba(255,255,255,.6);margin-bottom:36px}
+.booking-left .btn-terr{margin-right:12px}
+.booking-trust{display:flex;flex-direction:column;gap:14px;margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1)}
+.bt-item{display:flex;align-items:center;gap:14px}
+.bt-icon{width:32px;height:32px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bt-icon svg{width:14px;height:14px;stroke:var(--terr);fill:none;stroke-width:1.5}
+.bt-text{font-size:12px;color:rgba(255,255,255,.5);line-height:1.5}
+.bt-text strong{color:rgba(255,255,255,.8);display:block;font-size:13px;font-weight:400}
+.booking-form{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:40px}
+.booking-form h3{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:#fff;margin-bottom:24px;font-style:italic}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-row.single{grid-template-columns:1fr}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.form-field input,.form-field select{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);padding:13px 16px;font-size:13px;color:#fff;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;-webkit-appearance:none}
+.form-field input::placeholder{color:rgba(255,255,255,.3)}
+.form-field input:focus,.form-field select:focus{border-color:var(--terr)}
+.form-field select option{background:var(--ink);color:#fff}
+.form-submit{width:100%;margin-top:14px;padding:16px;background:var(--terr);color:#fff;border:none;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background .3s}
+.form-submit:hover{background:var(--terr2)}
+.form-note{font-size:11px;color:rgba(255,255,255,.35);margin-top:12px;text-align:center;letter-spacing:.3px}
+
+/* ── INSTAGRAM ── */
+.instagram{padding:0;background:var(--sand);border-top:1px solid var(--border)}
+.insta-header{display:flex;justify-content:space-between;align-items:center;padding:50px 60px 0}
+.insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;background:var(--border);margin-top:30px}
+.insta-cell{aspect-ratio:1;overflow:hidden;position:relative;background:var(--warm)}
+.insta-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.insta-cell:hover img{transform:scale(1.06)}
+.insta-cell-overlay{position:absolute;inset:0;background:rgba(168,88,42,.0);transition:background .3s;display:flex;align-items:center;justify-content:center}
+.insta-cell:hover .insta-cell-overlay{background:rgba(168,88,42,.5)}
+.insta-cell-icon{opacity:0;transition:opacity .3s;color:#fff;font-size:24px}
+.insta-cell:hover .insta-cell-icon{opacity:1}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(255,255,255,.7)}
+.footer-top{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.2fr;gap:0;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-col{padding:60px}
+.footer-col+.footer-col{border-left:1px solid rgba(255,255,255,.08)}
+.footer-logo{font-family:'Fraunces',serif;font-size:24px;font-weight:300;color:#fff;margin-bottom:16px}
+.footer-logo em{font-style:italic;color:var(--terr)}
+.footer-tagline{font-size:13px;line-height:1.8;color:rgba(255,255,255,.5);margin-bottom:28px}
+.footer-social{display:flex;gap:12px}
+.footer-social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;transition:all .2s;font-size:13px}
+.footer-social a:hover{border-color:var(--terr);color:var(--terr)}
+.footer-col h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:22px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--terr)}
+.footer-addr{font-size:13px;line-height:2;color:rgba(255,255,255,.5);margin-bottom:18px}
+.footer-phone{font-family:'Fraunces',serif;font-size:20px;color:#fff;text-decoration:none;font-style:italic;display:block;margin-bottom:6px}
+.footer-phone:hover{color:var(--terr)}
+.footer-bottom{padding:22px 60px;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:11px;color:rgba(255,255,255,.35)}
+.footer-bottom-links{display:flex;gap:24px}
+.footer-bottom-links a{font-size:11px;color:rgba(255,255,255,.35);text-decoration:none}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.7)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:60px 40px;border-right:none;border-bottom:1px solid var(--border)}
+  .hero-right{height:70vw}
+  .intro-strip{grid-template-columns:1fr 1fr}
+  .intro-cell:nth-child(2){border-right:none}
+  .intro-cell:nth-child(3){border-right:1px solid var(--border);border-top:1px solid var(--border)}
+  .intro-cell:nth-child(4){border-top:1px solid var(--border)}
+  .about-split{grid-template-columns:1fr}
+  .tx-grid{grid-template-columns:1fr 1fr}
+  .tx-grid-bottom{grid-template-columns:1fr}
+  .doctors-scroll{grid-template-columns:1fr 1fr}
+  .process-steps{grid-template-columns:1fr 1fr}
+  .proc-arrow{display:none}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .stat-block:nth-child(2){border-right:none}
+  .stat-block:nth-child(3){border-top:1px solid var(--border)}
+  .why{grid-template-columns:1fr}
+  .locations-grid{grid-template-columns:1fr 1fr}
+  .booking{grid-template-columns:1fr;gap:50px}
+  .insta-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .footer-col:nth-child(3){border-top:1px solid rgba(255,255,255,.08)}
+  .footer-col:nth-child(3){border-left:none}
+}
+@media(max-width:700px){
+  .top-bar,.nav-links,.nav-cta{display:none}
+  .nav-inner{padding:0 24px}
+  .hero-left,.about-left,.about-right,.treatments,.process,.locations,.booking,.testi,.doctors-head{padding:50px 24px}
+  .intro-strip{grid-template-columns:1fr 1fr}
+  .tx-grid,.testi-grid,.doctors-scroll{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .locations-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .footer-col+.footer-col{border-left:none;border-top:1px solid rgba(255,255,255,.08)}
+  .footer-bottom{flex-direction:column;gap:16px;text-align:center;padding:24px}
+  .why-right{display:none}
+  .insta-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <p>Bengaluru's most trusted dermatology clinic — Now open in 3 locations</p>
+  <div class="top-bar-links">
+    <a href="tel:+918067890000">+91 80 6789 0000</a>
+    <span>|</span>
+    <a href="#">Book Online</a>
+    <span>|</span>
+    <a href="#">Clinic Locations</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Skin<em>matics</em></a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">Treatments</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Our Doctors</a></li>
+      <li><a href="#">Results</a></li>
+      <li><a href="#">Blog</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+918067890000">+91 80 6789 0000</a>
+      <a class="btn-terr" href="#booking">Book Consultation</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">Bengaluru's Premier Dermatology Practice</span>
+    </div>
+    <h1 class="hero-h1">Your skin,<br><em>perfected</em><br>by science.</h1>
+    <p class="hero-sub">Board-certified dermatologists.<br>Clinical precision. Lasting results.</p>
+    <p class="hero-desc">At Skinmatics, every treatment is designed around your unique biology — not a generic protocol. From acne and pigmentation to anti-ageing and hair restoration, our dermatologists deliver results you can see and measure.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-terr">Book a Consultation</a>
+      <a href="#treatments" class="btn-outline">Explore Treatments</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="t-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5L22 10l-5 4.8 1.2 7L12 18.8 5.8 21.8 7 14.8 2 10l7-.5z"/></svg>
+        </div>
+        <div class="t-text"><strong>4.9 / 5 Stars</strong>1,200+ verified reviews</div>
+      </div>
+      <div class="trust-item">
+        <div class="t-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="t-text"><strong>Clinically Proven</strong>Evidence-based protocols</div>
+      </div>
+      <div class="trust-item">
+        <div class="t-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="t-text"><strong>15+ Years</strong>Of dermatology excellence</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-right-img" src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&q=80" alt="Skinmatics Clinic">
+    <div class="hero-right-overlay"></div>
+    <div class="hero-badge">
+      <div class="b-num">15+</div>
+      <div class="b-text">Years of<br>Excellence</div>
+    </div>
+    <div class="hero-caption">
+      <div class="hero-caption-label">Trusted by thousands</div>
+      <div class="hero-caption-text">Real results, real people</div>
+      <div class="hero-caption-stats">
+        <div class="hc-stat">
+          <div class="hs-num">20K+</div>
+          <div class="hs-lbl">Patients treated</div>
+        </div>
+        <div class="hc-stat" style="padding-left:24px">
+          <div class="hs-num">96%</div>
+          <div class="hs-lbl">Satisfaction rate</div>
+        </div>
+        <div class="hc-stat" style="padding-left:24px">
+          <div class="hs-num">3</div>
+          <div class="hs-lbl">Bengaluru clinics</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-wrap">
+    <span class="ti">Acne & Scar Correction</span><span class="ts">—</span>
+    <span class="ti">Anti-Ageing Aesthetics</span><span class="ts">—</span>
+    <span class="ti">Laser Hair Reduction</span><span class="ts">—</span>
+    <span class="ti">Pigmentation Therapy</span><span class="ts">—</span>
+    <span class="ti">Hair Restoration</span><span class="ts">—</span>
+    <span class="ti">Chemical Peels</span><span class="ts">—</span>
+    <span class="ti">Botox & Fillers</span><span class="ts">—</span>
+    <span class="ti">RF Microneedling</span><span class="ts">—</span>
+    <span class="ti">Acne & Scar Correction</span><span class="ts">—</span>
+    <span class="ti">Anti-Ageing Aesthetics</span><span class="ts">—</span>
+    <span class="ti">Laser Hair Reduction</span><span class="ts">—</span>
+    <span class="ti">Pigmentation Therapy</span><span class="ts">—</span>
+    <span class="ti">Hair Restoration</span><span class="ts">—</span>
+    <span class="ti">Chemical Peels</span><span class="ts">—</span>
+    <span class="ti">Botox & Fillers</span><span class="ts">—</span>
+    <span class="ti">RF Microneedling</span><span class="ts">—</span>
+  </div>
+</div>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-cell reveal">
+    <div class="intro-num">20K+</div>
+    <div class="intro-label"><strong>Patients Treated</strong>Across all specialties since 2009</div>
+  </div>
+  <div class="intro-cell reveal reveal-delay-1">
+    <div class="intro-num">12</div>
+    <div class="intro-label"><strong>Board-certified Dermatologists</strong>Specialists, never delegates</div>
+  </div>
+  <div class="intro-cell reveal reveal-delay-2">
+    <div class="intro-num">3</div>
+    <div class="intro-label"><strong>Bengaluru Clinics</strong>Koramangala · Indiranagar · Whitefield</div>
+  </div>
+  <div class="intro-cell reveal reveal-delay-3">
+    <div class="intro-num">96%</div>
+    <div class="intro-label"><strong>Patient Satisfaction</strong>Based on post-treatment surveys</div>
+  </div>
+</div>
+
+<!-- ABOUT SPLIT -->
+<section class="about-split">
+  <div class="about-left">
+    <div>
+      <div class="eyebrow">About Skinmatics</div>
+      <h2>Where <em>clinical rigour</em><br>meets compassionate care</h2>
+      <p>Skinmatics was founded on a single conviction: that every patient deserves access to evidence-based dermatology delivered with the same precision and personalisation reserved for the world's best clinics. We reject one-size-fits-all solutions. Every skin is different. Every protocol should be too.</p>
+      <a href="#" class="btn-terr">Our Story →</a>
+    </div>
+    <div class="about-pillars">
+      <div class="pillar">
+        <div class="pillar-title">Science First</div>
+        <div class="pillar-desc">Every treatment is grounded in peer-reviewed evidence and clinical data.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title">Always Personal</div>
+        <div class="pillar-desc">Your biology, history, and goals shape every protocol we create.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title">Results Driven</div>
+        <div class="pillar-desc">We measure outcomes at every session and adjust in real time.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title">Ethically Transparent</div>
+        <div class="pillar-desc">No upselling. No unnecessary procedures. Just honest guidance.</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="about-img-wrap">
+      <img class="about-img" src="https://images.unsplash.com/photo-1579154341184-0b8e78c8fc65?w=900&q=80" alt="Skinmatics Clinic Interior">
+      <div class="about-img-badge">
+        <div class="ab-num">2009</div>
+        <div class="ab-text">Founded</div>
+      </div>
+    </div>
+    <div class="about-right-text">
+      <h3>Our <em>promise</em> to you</h3>
+      <p>You will only ever be treated by a qualified dermatologist at Skinmatics. Every consultation, every procedure, every follow-up — a doctor, not a technician. This is non-negotiable and always will be.</p>
+      <a href="#" class="btn-outline">Meet Our Team →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENTS -->
+<section class="treatments" id="treatments">
+  <div class="treatments-header reveal">
+    <div>
+      <div class="eyebrow">What We Treat</div>
+      <h2 class="section-title">Expert treatments for<br>every <em>skin concern</em></h2>
+    </div>
+    <a href="#" class="btn-outline">All Treatments →</a>
+  </div>
+  <div class="tx-grid">
+    <div class="tx-card reveal reveal-delay-1">
+      <div class="tx-card-img">
+        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80" alt="Acne">
+        <div class="tx-card-num">01</div>
+      </div>
+      <div class="tx-card-body">
+        <div class="tx-card-cat">Skin Concerns</div>
+        <div class="tx-card-name">Acne & Scar Correction</div>
+        <div class="tx-card-desc">Advanced, clinically proven protocols to clear active acne, resurface scars, and fade post-inflammatory hyperpigmentation.</div>
+        <a href="#" class="tx-card-link">Explore Treatment <svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+    <div class="tx-card reveal reveal-delay-2">
+      <div class="tx-card-img">
+        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=80" alt="Anti-Ageing">
+        <div class="tx-card-num">02</div>
+      </div>
+      <div class="tx-card-body">
+        <div class="tx-card-cat">Aesthetic Medicine</div>
+        <div class="tx-card-name">Anti-Ageing Aesthetics</div>
+        <div class="tx-card-desc">Botox, fillers, skin boosters and collagen-stimulating treatments to restore youthful volume and reduce fine lines.</div>
+        <a href="#" class="tx-card-link">Explore Treatment <svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+    <div class="tx-card reveal reveal-delay-3">
+      <div class="tx-card-img">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Laser">
+        <div class="tx-card-num">03</div>
+      </div>
+      <div class="tx-card-body">
+        <div class="tx-card-cat">Laser Treatments</div>
+        <div class="tx-card-name">Laser Hair Reduction</div>
+        <div class="tx-card-desc">Permanent reduction of unwanted body and facial hair with diode laser technology, safe for all Indian skin tones.</div>
+        <a href="#" class="tx-card-link">Explore Treatment <svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="tx-grid-bottom">
+    <div class="tx-card reveal reveal-delay-1">
+      <div class="tx-card-img" style="aspect-ratio:16/7">
+        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=900&q=80" alt="Pigmentation">
+        <div class="tx-card-num">04</div>
+      </div>
+      <div class="tx-card-body">
+        <div class="tx-card-cat">Pigmentation</div>
+        <div class="tx-card-name">Pigmentation & Melasma Therapy</div>
+        <div class="tx-card-desc">Targeted treatment for melasma, sun damage, and uneven skin tone using Q-switched lasers and depigmentation peels.</div>
+        <a href="#" class="tx-card-link">Explore Treatment <svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+    <div class="tx-card reveal reveal-delay-2">
+      <div class="tx-card-img" style="aspect-ratio:16/7">
+        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=900&q=80" alt="Hair">
+        <div class="tx-card-num">05</div>
+      </div>
+      <div class="tx-card-body">
+        <div class="tx-card-cat">Hair & Scalp</div>
+        <div class="tx-card-name">Hair Restoration</div>
+        <div class="tx-card-desc">PRP, GFC, and low-level laser therapy protocols to address thinning hair and promote scalp health and regrowth.</div>
+        <a href="#" class="tx-card-link">Explore Treatment <svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAGE MARQUEE -->
+<div class="marquee-sage">
+  <div class="ticker-wrap">
+    <span class="ms-item">Board-certified Dermatologists</span><span class="ms-sep">·</span>
+    <span class="ms-item">Evidence-based Protocols</span><span class="ms-sep">·</span>
+    <span class="ms-item">Personalised Treatment Plans</span><span class="ms-sep">·</span>
+    <span class="ms-item">No Unnecessary Procedures</span><span class="ms-sep">·</span>
+    <span class="ms-item">Transparent Pricing</span><span class="ms-sep">·</span>
+    <span class="ms-item">All Fitzpatrick Skin Types</span><span class="ms-sep">·</span>
+    <span class="ms-item">Board-certified Dermatologists</span><span class="ms-sep">·</span>
+    <span class="ms-item">Evidence-based Protocols</span><span class="ms-sep">·</span>
+    <span class="ms-item">Personalised Treatment Plans</span><span class="ms-sep">·</span>
+    <span class="ms-item">No Unnecessary Procedures</span><span class="ms-sep">·</span>
+    <span class="ms-item">Transparent Pricing</span><span class="ms-sep">·</span>
+    <span class="ms-item">All Fitzpatrick Skin Types</span><span class="ms-sep">·</span>
+  </div>
+</div>
+
+<!-- DOCTORS -->
+<section class="doctors">
+  <div class="doctors-head reveal">
+    <div>
+      <div class="eyebrow">Our Team</div>
+      <h2 class="section-title">Meet your <em>dermatologists</em></h2>
+    </div>
+    <a href="#" class="btn-outline">All Doctors →</a>
+  </div>
+  <div class="doctors-scroll">
+    <div class="doc-card">
+      <div class="doc-card-img">
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80" alt="Dr. Priya Sharma">
+        <div class="doc-card-overlay"></div>
+        <div class="doc-card-body">
+          <div class="doc-card-name">Dr. Priya Sharma</div>
+          <div class="doc-card-qual">MD Dermatology, AIIMS Delhi · 14 years experience</div>
+          <div class="doc-card-spec">
+            <span>Acne</span><span>Pigmentation</span><span>Laser</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-card-img">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=80" alt="Dr. Arun Mehta">
+        <div class="doc-card-overlay"></div>
+        <div class="doc-card-body">
+          <div class="doc-card-name">Dr. Arun Mehta</div>
+          <div class="doc-card-qual">DNB Dermatology, NIMHANS · 11 years experience</div>
+          <div class="doc-card-spec">
+            <span>Anti-Ageing</span><span>Fillers</span><span>Botox</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-card-img">
+        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=500&q=80" alt="Dr. Kavitha Reddy">
+        <div class="doc-card-overlay"></div>
+        <div class="doc-card-body">
+          <div class="doc-card-name">Dr. Kavitha Reddy</div>
+          <div class="doc-card-qual">MD DVL, Bangalore Medical College · 9 years experience</div>
+          <div class="doc-card-spec">
+            <span>Hair Loss</span><span>Scalp</span><span>PRP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-card-img">
+        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&q=80" alt="Dr. Siddharth Nair">
+        <div class="doc-card-overlay"></div>
+        <div class="doc-card-body">
+          <div class="doc-card-name">Dr. Siddharth Nair</div>
+          <div class="doc-card-qual">MBBS, MD Dermatology, CMC Vellore · 7 years experience</div>
+          <div class="doc-card-spec">
+            <span>Peels</span><span>Microneedling</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-header reveal">
+    <div>
+      <div class="eyebrow">How It Works</div>
+      <h2 class="section-title">Your journey to <em>better skin</em><br>starts here</h2>
+    </div>
+    <a href="#booking" class="btn-outline">Begin your journey →</a>
+  </div>
+  <div class="process-steps">
+    <div class="proc-step reveal reveal-delay-1">
+      <div class="proc-num">01</div>
+      <h3 class="proc-title">Book a Consultation</h3>
+      <p class="proc-desc">Choose a clinic, a doctor, and a time that suits you. Your 45-minute initial consultation is a thorough skin assessment — not a sales pitch.</p>
+      <div class="proc-arrow"><svg viewBox="0 0 12 12"><path d="M2 6h8M7 3l3 3-3 3" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="proc-step reveal reveal-delay-2">
+      <div class="proc-num">02</div>
+      <h3 class="proc-title">Skin Analysis & Diagnosis</h3>
+      <p class="proc-desc">Your dermatologist performs a detailed analysis: skin typing, condition grading, photography, and medical history review to design your protocol.</p>
+      <div class="proc-arrow"><svg viewBox="0 0 12 12"><path d="M2 6h8M7 3l3 3-3 3" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="proc-step reveal reveal-delay-3">
+      <div class="proc-num">03</div>
+      <h3 class="proc-title">Your Personalised Plan</h3>
+      <p class="proc-desc">We present a clear, costed treatment roadmap with expected outcomes, timelines, and alternatives. No pressure — just facts.</p>
+      <div class="proc-arrow"><svg viewBox="0 0 12 12"><path d="M2 6h8M7 3l3 3-3 3" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="proc-step reveal reveal-delay-4">
+      <div class="proc-num">04</div>
+      <h3 class="proc-title">Treatment & Follow-up</h3>
+      <p class="proc-desc">Sessions are delivered by your dermatologist with photographic progress tracking and protocol adjustments at every visit for optimal results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-inner">
+    <div class="stat-block reveal">
+      <div class="stat-big">20K+</div>
+      <div class="stat-lbl">Patients treated<br>successfully</div>
+    </div>
+    <div class="stat-block reveal reveal-delay-1">
+      <div class="stat-big">94%</div>
+      <div class="stat-lbl">Average clearance rate<br>within 8 weeks</div>
+    </div>
+    <div class="stat-block reveal reveal-delay-2">
+      <div class="stat-big">15+</div>
+      <div class="stat-lbl">Years of dermatology<br>excellence</div>
+    </div>
+    <div class="stat-block reveal reveal-delay-3">
+      <div class="stat-big">12</div>
+      <div class="stat-lbl">Board-certified<br>dermatologists</div>
+    </div>
+    <div class="stat-block reveal reveal-delay-4">
+      <div class="stat-big">4.9★</div>
+      <div class="stat-lbl">Average patient rating<br>across all clinics</div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="testi-header reveal">
+    <div>
+      <div class="eyebrow">Patient Stories</div>
+      <h2 class="section-title">What our patients <em>say</em></h2>
+    </div>
+    <a href="#" class="btn-outline">Read All Reviews →</a>
+  </div>
+  <div class="testi-grid">
+    <div class="t-card reveal reveal-delay-1">
+      <div class="t-stars">
+        <span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span>
+      </div>
+      <div class="t-quote">"After struggling with cystic acne for almost a decade, I was honestly sceptical. Within three sessions the active breakouts had reduced by 80%. By session six, my skin was clearer than it had ever been as an adult."</div>
+      <div class="t-patient">
+        <div class="t-avatar">M</div>
+        <div>
+          <div class="t-name">Meera Krishnamurthy</div>
+          <div class="t-tag">Acne & Scar Correction · Koramangala Clinic</div>
+          <div class="t-verified">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Verified patient
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t-card reveal reveal-delay-2">
+      <div class="t-stars">
+        <span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span>
+      </div>
+      <div class="t-quote">"Dr. Priya is extraordinary — the most thorough doctor I have ever seen. She explained every step, showed me scientific literature for the treatments she was recommending, and never pushed anything unnecessary. This is how medicine should work."</div>
+      <div class="t-patient">
+        <div class="t-avatar">R</div>
+        <div>
+          <div class="t-name">Rohan Desai</div>
+          <div class="t-tag">Anti-Ageing Aesthetics · Indiranagar Clinic</div>
+          <div class="t-verified">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Verified patient
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t-card reveal reveal-delay-3">
+      <div class="t-stars">
+        <span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span>
+      </div>
+      <div class="t-quote">"I came in for laser hair reduction and mentioned my melasma almost as an afterthought. Dr. Kavitha immediately recognised it as hormonal melasma and designed a completely separate protocol. Six months later the difference is remarkable."</div>
+      <div class="t-patient">
+        <div class="t-avatar">A</div>
+        <div>
+          <div class="t-name">Ananya Iyer</div>
+          <div class="t-tag">Pigmentation Therapy · Whitefield Clinic</div>
+          <div class="t-verified">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Verified patient
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SKINMATICS -->
+<section class="why">
+  <div class="why-left">
+    <div class="eyebrow">Why Skinmatics</div>
+    <h2 class="section-title">The standard we hold<br>ourselves <em>to</em></h2>
+    <div class="why-list">
+      <div class="why-item reveal">
+        <div class="why-item-num">01</div>
+        <div class="why-item-body">
+          <div class="why-item-title">Dermatologist-only care</div>
+          <div class="why-item-desc">Every single procedure is performed or directly supervised by a qualified dermatologist. We do not delegate clinical work to aestheticians or technicians.</div>
+        </div>
+      </div>
+      <div class="why-item reveal reveal-delay-1">
+        <div class="why-item-num">02</div>
+        <div class="why-item-body">
+          <div class="why-item-title">Evidence-based protocols only</div>
+          <div class="why-item-desc">We will not offer a treatment we cannot back with clinical evidence. If something doesn't have sufficient data, we say so — and we tell you what does work.</div>
+        </div>
+      </div>
+      <div class="why-item reveal reveal-delay-2">
+        <div class="why-item-num">03</div>
+        <div class="why-item-body">
+          <div class="why-item-title">Transparent, no-pressure pricing</div>
+          <div class="why-item-desc">You receive a clear cost breakdown before any treatment begins. No hidden fees, no package bundling designed to maximise spend, no post-treatment upsells.</div>
+        </div>
+      </div>
+      <div class="why-item reveal reveal-delay-3">
+        <div class="why-item-num">04</div>
+        <div class="why-item-body">
+          <div class="why-item-title">Designed for Indian skin</div>
+          <div class="why-item-desc">Our protocols are calibrated specifically for Fitzpatrick types III–VI, which dominate our patient population. Not adapted from Western protocols — built from the ground up.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="why-right">
+    <div class="why-img-block why-full" style="aspect-ratio:auto">
+      <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80" alt="Clinic">
+      <div class="why-img-block-overlay">
+        <div class="why-img-block-label">State-of-the-art clinical environment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations">
+  <div class="locations-header reveal">
+    <div>
+      <div class="eyebrow">Our Clinics</div>
+      <h2 class="section-title">Three clinics across <em>Bengaluru</em></h2>
+    </div>
+    <a href="#" class="btn-outline">Get Directions →</a>
+  </div>
+  <div class="locations-grid">
+    <div class="loc-card reveal reveal-delay-1">
+      <div class="loc-card-num">01</div>
+      <div class="loc-card-city">Koramangala</div>
+      <div class="loc-card-area">South Bengaluru · Flagship Clinic</div>
+      <div class="loc-card-addr">12, 80 Feet Rd, 4th Block<br>Koramangala, Bengaluru<br>Karnataka 560034</div>
+      <a href="#" class="loc-card-link">Get Directions <svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="loc-card reveal reveal-delay-2">
+      <div class="loc-card-num">02</div>
+      <div class="loc-card-city">Indiranagar</div>
+      <div class="loc-card-area">Central Bengaluru</div>
+      <div class="loc-card-addr">34, 12th Main, HAL 2nd Stage<br>Indiranagar, Bengaluru<br>Karnataka 560008</div>
+      <a href="#" class="loc-card-link">Get Directions <svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="loc-card reveal reveal-delay-3">
+      <div class="loc-card-num">03</div>
+      <div class="loc-card-city">Whitefield</div>
+      <div class="loc-card-area">East Bengaluru</div>
+      <div class="loc-card-addr">5, ITPL Main Rd, Brookefield<br>Whitefield, Bengaluru<br>Karnataka 560037</div>
+      <a href="#" class="loc-card-link">Get Directions <svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING CTA -->
+<section class="booking" id="booking">
+  <div class="booking-left reveal">
+    <div class="eyebrow">Book a Consultation</div>
+    <h2>Ready to begin your<br>skin <em>transformation?</em></h2>
+    <p>Your first consultation is a thorough, no-pressure skin assessment with a board-certified dermatologist. We listen first, then build a protocol designed specifically for you.</p>
+    <div>
+      <a href="tel:+918067890000" class="btn-terr">Call Us Now</a>
+      <a href="#" class="btn-outline" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7)">Learn More</a>
+    </div>
+    <div class="booking-trust">
+      <div class="bt-item">
+        <div class="bt-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg></div>
+        <div class="bt-text"><strong>No upselling guarantee</strong>We only recommend what you need</div>
+      </div>
+      <div class="bt-item">
+        <div class="bt-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div class="bt-text"><strong>Same-week appointments</strong>Usually available within 3 days</div>
+      </div>
+      <div class="bt-item">
+        <div class="bt-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="bt-text"><strong>Fully confidential</strong>Your records remain private, always</div>
+      </div>
+    </div>
+  </div>
+  <div class="booking-form reveal reveal-delay-2">
+    <h3>Request an appointment</h3>
+    <div class="form-row">
+      <div class="form-field">
+        <label>First Name</label>
+        <input type="text" placeholder="Priya">
+      </div>
+      <div class="form-field">
+        <label>Last Name</label>
+        <input type="text" placeholder="Sharma">
+      </div>
+    </div>
+    <div class="form-row single">
+      <div class="form-field">
+        <label>Mobile Number</label>
+        <input type="tel" placeholder="+91 98000 00000">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label>Clinic Location</label>
+        <select>
+          <option>Koramangala</option>
+          <option>Indiranagar</option>
+          <option>Whitefield</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Treatment Interest</label>
+        <select>
+          <option>Acne & Scars</option>
+          <option>Anti-Ageing</option>
+          <option>Laser Hair Reduction</option>
+          <option>Pigmentation</option>
+          <option>Hair Restoration</option>
+          <option>General Skin Health</option>
+        </select>
+      </div>
+    </div>
+    <button class="form-submit">Request Appointment</button>
+    <p class="form-note">A member of our team will call you within 2 hours to confirm. No spam, ever.</p>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="instagram">
+  <div class="insta-header reveal">
+    <div>
+      <div class="eyebrow">Follow Our Work</div>
+      <h2 class="section-title">@skinmatics <em>on Instagram</em></h2>
+    </div>
+    <a href="#" class="btn-outline">Follow Us →</a>
+  </div>
+  <div class="insta-grid">
+    <div class="insta-cell"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=300&q=80" alt=""><div class="insta-cell-overlay"><span class="insta-cell-icon">♡</span></div></div>
+    <div class="insta-cell"><img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=300&q=80" alt=""><div class="insta-cell-overlay"><span class="insta-cell-icon">♡</span></div></div>
+    <div class="insta-cell"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=300&q=80" alt=""><div class="insta-cell-overlay"><span class="insta-cell-icon">♡</span></div></div>
+    <div class="insta-cell"><img src="https://images.unsplash.com/photo-1579154341184-0b8e78c8fc65?w=300&q=80" alt=""><div class="insta-cell-overlay"><span class="insta-cell-icon">♡</span></div></div>
+    <div class="insta-cell"><img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=300&q=80" alt=""><div class="insta-cell-overlay"><span class="insta-cell-icon">♡</span></div></div>
+    <div class="insta-cell"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=300&q=80" alt=""><div class="insta-cell-overlay"><span class="insta-cell-icon">♡</span></div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-col">
+      <div class="footer-logo">Skin<em>matics</em></div>
+      <p class="footer-tagline">Bengaluru's most trusted dermatology practice. Science-led, results-driven, always humane.</p>
+      <div class="footer-social">
+        <a href="#">in</a>
+        <a href="#">ig</a>
+        <a href="#">yt</a>
+        <a href="#">fb</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Treatments</h4>
+      <ul class="footer-links">
+        <li><a href="#">Acne & Scar Correction</a></li>
+        <li><a href="#">Anti-Ageing Aesthetics</a></li>
+        <li><a href="#">Laser Hair Reduction</a></li>
+        <li><a href="#">Pigmentation Therapy</a></li>
+        <li><a href="#">Hair Restoration</a></li>
+        <li><a href="#">Chemical Peels</a></li>
+        <li><a href="#">Botox & Fillers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="#">About Skinmatics</a></li>
+        <li><a href="#">Our Dermatologists</a></li>
+        <li><a href="#">Our Clinics</a></li>
+        <li><a href="#">Patient Results</a></li>
+        <li><a href="#">Blog & Skin Library</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Koramangala Clinic</h4>
+      <p class="footer-addr">12, 80 Feet Rd, 4th Block<br>Koramangala, Bengaluru<br>Karnataka 560034</p>
+      <a class="footer-phone" href="tel:+918067890000">+91 80 6789 0000</a>
+      <ul class="footer-links" style="margin-top:16px">
+        <li><a href="#">Find other locations →</a></li>
+        <li><a href="#">Book online →</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Skinmatics Dermatology Pvt. Ltd. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Medical Disclaimer</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Scroll reveal
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── Sticky nav shadow
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.style.boxShadow = window.scrollY>20 ? '0 2px 20px rgba(0,0,0,.08)' : '';
+});
+
+// ── Form submission
+document.querySelector('.form-submit').addEventListener('click',()=>{
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = 'Request Sent — We\'ll Call You Soon';
+  btn.style.background = 'var(--sage)';
+  setTimeout(()=>{btn.textContent='Request Appointment';btn.style.background='';},4000);
+});
+</script>
+
+</body>
+</html>
